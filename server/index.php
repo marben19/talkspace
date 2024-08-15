@@ -13,7 +13,7 @@ require '../vendor/autoload.php';
 
 DB::$user = 'root';
 DB::$password = '';
-DB::$dbName = 'lms_student';
+DB::$dbName = 'app_db';
 DB::$encoding = 'utf8';
 
 
@@ -25,7 +25,7 @@ use Phroute\Phroute\RouteCollector;
 
 
 $router = new RouteCollector();
-$user = new User();
+$server = new Server();
 
 
 date_default_timezone_set('Asia/Manila');
@@ -33,7 +33,7 @@ date_default_timezone_set('Asia/Manila');
 
 #User.php
 
-// $router->post('lms/studentapi/get-single-message', fn() => $user->get_single_message());
+$router->post('talkspace/server/signup', fn() => $server->register_user());
 
 
 

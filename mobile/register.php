@@ -59,12 +59,19 @@
         <h6 class="mb-3 text-center">Register to continue</h6>
         
         <form action="otp.html">
+          <div class="form-group  text-start mb-3">
+              <select class="form-select" id="usertype" name="defaultSelect" aria-label="Default select example">
+                <option value="0" selected="" hidden>Select User Type</option>
+                <option value="Student">Student</option>
+                <option value="Teacher">Teacher</option>
+              </select>
+          </div>
           <div class="form-group text-start mb-3">
-            <input class="form-control" type="text" placeholder="Email address">
+            <input class="form-control" type="text" id="email" placeholder="Email address">
           </div>
 
           <div class="form-group text-start mb-3">
-            <input class="form-control" type="text" placeholder="Username">
+            <input class="form-control" type="text" id="uname" placeholder="Full Name">
           </div>
 
           <div class="form-group text-start mb-3 position-relative">
@@ -83,7 +90,7 @@
               policy.</label>
           </div>
 
-          <button class="btn btn-primary w-100" type="submit">Sign Up</button>
+          <button class="btn btn-primary w-100 signup" type="button">Sign Up</button>
         </form>
       </div>
 
@@ -95,12 +102,77 @@
   </div>
 
   <!-- All JavaScript Files -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script src="js/bootstrap.bundle.min.js"></script>
   <script src="js/internet-status.js"></script>
   <script src="js/dark-rtl.js"></script>
   <script src="js/pswmeter.js"></script>
   <script src="js/active.js"></script>
   <script src="js/pwa.js"></script>
+  <script>
+
+    $(document).on("click", ".signup", ()=>{
+
+      $.ajax({
+            url: "../server/signup",
+            type: "POST",
+            dataType: "json",
+            data: {
+                utype: $("#usertype").val(),
+                username: $("#uname").val(),
+                email: $("#email").val(),
+                password: $("#psw-input").val()
+            },
+            beforeSend: (e) => {
+              Swal.fire({
+                html: "Loading...",
+                didOpen: () => {
+                  Swal.showLoading();
+                },
+              });
+            },
+            success: (data) => {
+              Swal.close();
+
+              if (data.status == 1) {
+                    Swal.fire({
+                      icon: "success",
+                      title: "Request to register has been sent",
+                      text: 'Wait for the admin to appove your registration',
+                      confirmButtonColor: "#3085d6",
+                      cancelButtonColor: "#d33",
+                      confirmButtonText: "Ok",
+                    }).then((result) => {
+                      if (result.isConfirmed) {
+                        $("#uname").val("");
+                        $("#email").val("");
+                        $("#psw-input").val("");
+                        $("#usertype").val("");
+                      }
+                    });
+              }else{
+
+                    Swal.fire({
+                      icon: "error",
+                      title: data.response,
+                      confirmButtonColor: "#3085d6",
+                      cancelButtonColor: "#d33",
+                      confirmButtonText: "Ok",
+                    }).then((result) => {
+                      if (result.isConfirmed) {
+                      
+                      }
+                    });
+                
+              }
+
+            },
+          });
+
+    });
+
+  </script>
 </body>
 
 </html>
