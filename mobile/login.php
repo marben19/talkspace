@@ -60,7 +60,7 @@
 
         <form action="home.html">
           <div class="form-group">
-            <input class="form-control" type="text" id="username" placeholder="Username">
+            <input class="form-control" type="text" id="email" placeholder="Email">
           </div>
 
           <div class="form-group position-relative">
@@ -71,7 +71,7 @@
             </div>
           </div>
 
-          <button class="btn btn-primary w-100" type="submit">Sign In</button>
+          <button class="btn btn-primary w-100 signin" type="button">Sign In</button>
         </form>
       </div>
 
@@ -85,6 +85,8 @@
   </div>
 
   <!-- All JavaScript Files -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script src="js/bootstrap.bundle.min.js"></script>
   <script src="js/slideToggle.min.js"></script>
   <script src="js/internet-status.js"></script>
@@ -99,6 +101,63 @@
   <script src="js/dark-rtl.js"></script>
   <script src="js/active.js"></script>
   <script src="js/pwa.js"></script>
+  <script >
+
+  $(document).on("click", ".signin", ()=>{
+
+  $.ajax({
+        url: "../server/signin",
+        type: "POST",
+        dataType: "json",
+        data: {
+            email: $("#email").val(),
+            password: $("#psw-input").val()
+        },
+        beforeSend: (e) => {
+          Swal.fire({
+            html: "Loading...",
+            didOpen: () => {
+              Swal.showLoading();
+            },
+          });
+        },
+        success: (data) => {
+          Swal.close();
+
+          if (data.status == 1) {
+                Swal.fire({
+                  icon: "success",
+                  title: "Login successfully",
+                  confirmButtonColor: "#3085d6",
+                  cancelButtonColor: "#d33",
+                  confirmButtonText: "Ok",
+                }).then((result) => {
+                  if (result.isConfirmed) {
+                    window.location.href = "http://localhost/talkspace/mobile/components/student/index.php";
+                  }
+                });
+          }else{
+
+                Swal.fire({
+                  icon: "error",
+                  title: data.response,
+                  confirmButtonColor: "#3085d6",
+                  cancelButtonColor: "#d33",
+                  confirmButtonText: "Ok",
+                }).then((result) => {
+                  if (result.isConfirmed) {
+                  
+                  }
+                });
+            
+          }
+
+        },
+      });
+
+  });
+
+  </script>
 </body>
 
 </html>

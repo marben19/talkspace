@@ -33,6 +33,7 @@ date_default_timezone_set('Asia/Manila');
 
 #User.php
 
+$router->post('talkspace/server/signin', fn() => $server->login_user());
 $router->post('talkspace/server/signup', fn() => $server->register_user());
 
 
