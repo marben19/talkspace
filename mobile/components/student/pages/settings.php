@@ -45,7 +45,7 @@
           <p class="mb-2">Logout</p>
 
           <div class="single-setting-panel">
-            <a href="?logout">
+            <a style="cursor: pointer;" id="sign-out">
               <div class="icon-wrapper bg-danger">
                 <i class="bi bi-box-arrow-right"></i>
               </div>

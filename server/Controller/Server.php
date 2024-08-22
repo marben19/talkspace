@@ -58,6 +58,7 @@ class Server {
 
     }
 
+
     public function register_user()
     {
 
@@ -92,7 +93,6 @@ class Server {
     public function logout()
     {
         $this->auth->logOut();   
-        unset($_SESSION['system']);
         echo json_encode(["response" => "logout"]);
     }
 

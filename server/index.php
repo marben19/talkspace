@@ -36,6 +36,7 @@ date_default_timezone_set('Asia/Manila');
 $router->get('talkspace/server/get-teachers', fn() => $server->get_teachers());
 $router->post('talkspace/server/signin', fn() => $server->login_user());
 $router->post('talkspace/server/signup', fn() => $server->register_user());
+$router->post('talkspace/server/logout', fn() => $server->logout());
 
 
 

@@ -268,6 +268,12 @@ if (!isset($_SESSION['auth_user_id'])) {
         include 'pages/chat.php';
       } else if (isset($_GET['settings'])) {
         include 'pages/settings.php';
+      } else if (isset($_GET['updateprofile'])) {
+        include 'pages/updateprofile.php';
+      } else if (isset($_GET['changepassword'])) {
+        include 'pages/changepassword.php';
+      } else if (isset($_GET['privacy'])) {
+        include 'pages/privacy.php';
       }
     ?>
 
@@ -348,6 +354,41 @@ if (!isset($_SESSION['auth_user_id'])) {
     }
   ?> 
 
+  <script type="text/javascript">
+
+
+      $(document).on("click", "#sign-out", ()=>{
+
+
+      $.ajax({
+          url:"../../../server/logout",
+          type: "POST",
+          dataType: "json",
+          data: {
+              id: '<?= $_SESSION['auth_user_id'] ?>'
+          },
+          beforeSend: (e) => {
+          Swal.fire({
+            html: 'Loading...',
+            didOpen: () => {
+              Swal.showLoading()
+            }
+          })
+          },
+          success: (data) => { 
+
+          Swal.close(); 
+
+          window.location.href = "http://localhost/talkspace/mobile";
+
+
+        }
+
+       }); 
+
+      });
+
+  </script>
 
 </body>
 

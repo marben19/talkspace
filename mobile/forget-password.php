@@ -60,7 +60,7 @@
           <div class="form-group text-start mb-3">
             <input class="form-control" type="text" placeholder="Enter your email address">
           </div>
-          <button class="btn btn-primary w-100" type="submit">Reset Password</button>
+          <button class="btn btn-primary w-100" type="button">Reset Password</button>
         </form>
       </div>
     </div>

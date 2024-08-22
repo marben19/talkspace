@@ -133,7 +133,7 @@
                   confirmButtonText: "Ok",
                 }).then((result) => {
                   if (result.isConfirmed) {
-                    window.location.href = "http://localhost/talkspace/mobile/components/student/index.php";
+                    window.location.href = "http://localhost/talkspace/mobile/components/student/?home";
                   }
                 });
           }else{
