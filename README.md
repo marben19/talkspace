@@ -1,3 +1,5 @@
-# Affan - PWA Mobile Template
+# Talk Space Mobile APP
+
+Built on Affan Mobile Template
 -----------------------------
 
