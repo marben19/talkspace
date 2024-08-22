@@ -12,6 +12,15 @@ class Server {
         $this->auth = new \Delight\Auth\Auth($this->mkdb);
     }
 
+
+    public function get_teachers()
+    {
+
+      $teachers = $this->db->query("SELECT email, id, username, img FROM users WHERE user_type='Teacher' and verified='1'");      
+
+      echo json_encode(["lists" => $teachers]);
+    }
+
     public function login_user()
     {
 

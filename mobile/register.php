@@ -51,14 +51,14 @@
   <div class="login-wrapper d-flex align-items-center justify-content-center">
     <div class="custom-container">
       <div class="text-center px-4">
-        <img class="login-intro-img" src="img/1.png" alt="">
+        <img class="login-intro-img" src="img/1.png" alt="" style="height: 150px;">
       </div>
 
       <!-- Register Form -->
       <div class="register-form mt-4">
         <h6 class="mb-3 text-center">Register to continue</h6>
         
-        <form action="otp.html">
+        <form action="" style="width: 270px;">
           <div class="form-group  text-start mb-3">
               <select class="form-select" id="usertype" name="defaultSelect" aria-label="Default select example">
                 <option value="0" selected="" hidden>Select User Type</option>

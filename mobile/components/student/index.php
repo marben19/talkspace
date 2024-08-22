@@ -37,6 +37,17 @@ if (!isset($_SESSION['auth_user_id'])) {
 
   <!-- Web App Manifest -->
   <link rel="manifest" href="../../manifest.json">
+
+  <style type="text/css">
+      
+      .active a i{
+        color: #5266fa;
+      }
+      .active a span{
+        color: #5266fa !important;
+      }
+  </style>
+
 </head>
 
 <body>
@@ -70,7 +81,7 @@ if (!isset($_SESSION['auth_user_id'])) {
   <div class="page-content-wrapper">
 
     <!-- Welcome Toast -->
-    <div class="toast toast-autohide custom-toast-1 toast-primary home-page-toast shadow" role="alert" aria-live="assertive" aria-atomic="true"
+<!--     <div class="toast toast-autohide custom-toast-1 toast-primary home-page-toast shadow" role="alert" aria-live="assertive" aria-atomic="true"
     data-bs-delay="60000" data-bs-autohide="true" id="installWrap">
       <div class="toast-body p-4">
         <div class="toast-text me-2">
@@ -81,16 +92,20 @@ if (!isset($_SESSION['auth_user_id'])) {
       </div>
       <button class="btn btn-close btn-close-white position-absolute p-2" type="button" data-bs-dismiss="toast"
         aria-label="Close"></button>
-    </div>
+    </div> -->
 
 
 
-
+    <?php
+      if (isset($_GET['home'])) {
+        include 'pages/home.php';
+      } else if (isset($_GET['records'])) {
+        include 'pages/records.php';
+      }
+    ?>
 
 
   
-
-    
 
     
   </div>
@@ -101,36 +116,36 @@ if (!isset($_SESSION['auth_user_id'])) {
       <!-- Footer Content -->
       <div class="footer-nav position-relative">
         <ul class="h-100 d-flex align-items-center justify-content-between ps-0">
-          <li class="active">
-            <a href="home.html">
+          <li class="<?php if (isset($_GET['home'])) { echo 'active'; } ?>">
+            <a href="?home">
               <i class="bi bi-house"></i>
               <span>Home</span>
             </a>
           </li>
 
-          <li>
-            <a href="pages.html">
+          <li class="<?php if (isset($_GET['records'])) { echo 'active'; } ?>">
+            <a href="?records">
               <i class="bi bi-folder2-open"></i>
               <span>Records</span>
             </a>
           </li>
 
-          <li>
-            <a href="elements.html">
+          <li class="<?php if (isset($_GET['conference'])) { echo 'active'; } ?>">
+            <a href="?conference">
             <i class="bi bi-camera-video"></i>
               <span>Conference</span>
             </a>
           </li>
 
-          <li>
-            <a href="chat-users.html">
+          <li class="<?php if (isset($_GET['chat'])) { echo 'active'; } ?>">
+            <a href="?chat">
               <i class="bi bi-chat-dots"></i>
               <span>Chat</span>
             </a>
           </li>
 
-          <li>
-            <a href="settings.html">
+          <li class="<?php if (isset($_GET['settings'])) { echo 'active'; } ?>">
+            <a href="?settings">
               <i class="bi bi-gear"></i>
               <span>Settings</span>
             </a>
@@ -141,6 +156,7 @@ if (!isset($_SESSION['auth_user_id'])) {
   </div>
 
   <!-- All JavaScript Files -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
   <script src="../../js/bootstrap.bundle.min.js"></script>
   <script src="../../js/slideToggle.min.js"></script>
   <script src="../../js/internet-status.js"></script>
@@ -155,6 +171,16 @@ if (!isset($_SESSION['auth_user_id'])) {
   <script src="../../js/dark-rtl.js"></script>
   <script src="../../js/active.js"></script>
   <script src="../../js/pwa.js"></script>
+
+  <?php
+    if (isset($_GET['home'])) {
+     ?> 
+      <script src="js/home.js"></script> 
+    <?php
+    }
+  ?> 
+
+
 </body>
 
 </html>
