@@ -38,6 +38,8 @@ if (!isset($_SESSION['auth_user_id'])) {
   <!-- Web App Manifest -->
   <link rel="manifest" href="../../manifest.json">
 
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+
   <style type="text/css">
       
       .active a i{
@@ -155,8 +157,11 @@ if (!isset($_SESSION['auth_user_id'])) {
     </div>
   </div>
 
+
+
   <!-- All JavaScript Files -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
   <script src="../../js/bootstrap.bundle.min.js"></script>
   <script src="../../js/slideToggle.min.js"></script>
   <script src="../../js/internet-status.js"></script>

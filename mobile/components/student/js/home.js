@@ -35,7 +35,7 @@ $.ajax({
                           <!-- Product Price -->
                           <p class="sale-price">${e.email}</p>
                           <!-- Add To Cart Button -->
-                          <a class="btn btn-primary rounded-pill btn-sm" href="#">Seek Guidance</a>
+                          <a class="btn btn-primary rounded-pill btn-sm seek" style="cursor: pointer;" data-id="${e.id}">Seek Guidance</a>
                         </div>
                       </div>
                     </div>
@@ -46,4 +46,15 @@ $.ajax({
 
         });
     }
+});
+
+// Toastify({
+//     text: "This is a toast",
+//     duration: 3000
+// }).showToast();
+
+$(document).on("click", ".seek", (e)=>{
+
+    $("#fullscreenModal").modal("show");
+
 });
