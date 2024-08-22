@@ -1,4 +1,11 @@
-<!DOCTYPE html>
+<?php
+session_start();
+
+if (isset($_SESSION['auth_user_id'])) {
+  header("location: http://localhost/talkspace/mobile/components/student/index.php?home");
+}
+
+?>
 <html lang="en">
 
 <head>

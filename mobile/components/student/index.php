@@ -63,53 +63,214 @@ if (!isset($_SESSION['auth_user_id'])) {
   <!-- Internet Connection Status -->
   <div class="internet-connection-status" id="internetStatus"></div>
 
-  <!-- Header Area -->
-  <div class="header-area" id="headerArea">
-    <div class="container">
-      <!-- Header Content -->
-      <div class="header-content header-style-five position-relative d-flex align-items-center justify-content-between">
-        <!-- Logo Wrapper -->
-        <div class="logo-wrapper">
-          <a href="home.html">
-            <img src="../../img/small.png" alt="">
-          </a>
-        </div>
+  <!-- Dark mode switching -->
+  <div class="dark-mode-switching">
+    <div class="d-flex w-100 h-100 align-items-center justify-content-center">
+      <div class="dark-mode-text text-center">
+        <i class="bi bi-moon"></i>
+        <p class="mb-0">Switching to dark mode</p>
+      </div>
+      <div class="light-mode-text text-center">
+        <i class="bi bi-brightness-high"></i>
+        <p class="mb-0">Switching to light mode</p>
       </div>
     </div>
   </div>
 
- 
+  <?php 
+
+      if (isset($_GET['settings'])) {
+       ?>
+        <div class="header-area" id="headerArea">
+            <div class="container">
+              <!-- Header Content-->
+              <div class="header-content header-style-four position-relative d-flex align-items-center justify-content-between">
+                <!-- Back Button-->
+                <div class="back-button">
+                  <a class="" style="cursor: pointer;">
+                    <i class="bi bi-arrow-left-short"></i>
+                  </a>
+                </div>
+
+                <!-- Page Title-->
+                <div class="page-heading">
+                  <h6 class="mb-0">Settings</h6>
+                </div>
+
+
+                <!-- Settings -->
+                <div class="setting-wrapper">
+                  <div class="setting-trigger-btn" id="settingTriggerBtn">
+                    <i class="bi bi-gear"></i>
+                    <span></span>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+       <?php 
+      }else if (isset($_GET['updateprofile'])) {
+       ?>
+        <div class="header-area" id="headerArea">
+            <div class="container">
+              <!-- Header Content-->
+              <div class="header-content header-style-four position-relative d-flex align-items-center justify-content-between">
+                <!-- Back Button-->
+                <div class="back-button">
+                  <a href="?settings">
+                    <i class="bi bi-arrow-left-short"></i>
+                  </a>
+                </div>
+
+                <!-- Page Title-->
+                <div class="page-heading">
+                  <h6 class="mb-0">Update Profile</h6>
+                </div>
+
+
+                <!-- Settings -->
+                <div class="setting-wrapper">
+                  <div class="setting-trigger-btn" id="settingTriggerBtn">
+                    <i class="bi bi-gear"></i>
+                    <span></span>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+       <?php 
+      }else if (isset($_GET['changepassword'])) {
+       ?>
+        <div class="header-area" id="headerArea">
+            <div class="container">
+              <!-- Header Content-->
+              <div class="header-content header-style-four position-relative d-flex align-items-center justify-content-between">
+                <!-- Back Button-->
+                <div class="back-button">
+                  <a href="?settings">
+                    <i class="bi bi-arrow-left-short"></i>
+                  </a>
+                </div>
+
+                <!-- Page Title-->
+                <div class="page-heading">
+                  <h6 class="mb-0">Change Password</h6>
+                </div>
+
+
+                <!-- Settings -->
+                <div class="setting-wrapper">
+                  <div class="setting-trigger-btn" id="settingTriggerBtn">
+                    <i class="bi bi-gear"></i>
+                    <span></span>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+       <?php 
+      }else if (isset($_GET['privacy'])) {
+       ?>
+        <div class="header-area" id="headerArea">
+            <div class="container">
+              <!-- Header Content-->
+              <div class="header-content header-style-four position-relative d-flex align-items-center justify-content-between">
+                <!-- Back Button-->
+                <div class="back-button">
+                  <a href="?settings">
+                    <i class="bi bi-arrow-left-short"></i>
+                  </a>
+                </div>
+
+                <!-- Page Title-->
+                <div class="page-heading">
+                  <h6 class="mb-0">Privacy Policy</h6>
+                </div>
+
+
+                <!-- Settings -->
+                <div class="setting-wrapper">
+                  <div class="setting-trigger-btn" id="settingTriggerBtn">
+                    <i class="bi bi-gear"></i>
+                    <span></span>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+       <?php 
+      }else{
+       ?>
+        <!-- Header Area -->
+        <div class="header-area" id="headerArea">
+          <div class="container">
+            <!-- Header Content -->
+            <div class="header-content header-style-five position-relative d-flex align-items-center justify-content-between">
+              <!-- Logo Wrapper -->
+              <div class="logo-wrapper">
+                <a href="home.html">
+                  <img src="../../img/small.png" alt="">
+                </a>
+              </div>
+              <!-- Settings -->
+              <div class="setting-wrapper">
+                <div class="setting-trigger-btn" id="settingTriggerBtn">
+                  <i class="bi bi-gear"></i>
+                  <span></span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>  
+           
+       <?php
+      }
+
+   ?>
+
+   <!-- Setting Popup Overlay -->
+  <div id="setting-popup-overlay"></div>
+
+  <!-- Setting Popup Card -->
+  <div class="card setting-popup-card shadow-lg" id="settingCard">
+    <div class="card-body">
+      <div class="container">
+        <div class="setting-heading d-flex align-items-center justify-content-between mb-3">
+          <p class="mb-0">Mode Settings</p>
+          <div class="btn-close" id="settingCardClose"></div>
+        </div>
+
+        <div class="single-setting-panel">
+          <div class="form-check form-switch mb-2">
+            <input class="form-check-input" type="checkbox" id="darkSwitch">
+            <label class="form-check-label" for="darkSwitch">Dark mode</label>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
 
   <div class="page-content-wrapper">
-
-    <!-- Welcome Toast -->
-<!--     <div class="toast toast-autohide custom-toast-1 toast-primary home-page-toast shadow" role="alert" aria-live="assertive" aria-atomic="true"
-    data-bs-delay="60000" data-bs-autohide="true" id="installWrap">
-      <div class="toast-body p-4">
-        <div class="toast-text me-2">
-          <h6 class="text-white">Welcome to TalkSpace!</h6>
-          <span class="d-block mb-2">Where compassionate guidance meets personalized support to help you navigate life's challenges.</span>
-     
-        </div>
-      </div>
-      <button class="btn btn-close btn-close-white position-absolute p-2" type="button" data-bs-dismiss="toast"
-        aria-label="Close"></button>
-    </div> -->
-
-
 
     <?php
       if (isset($_GET['home'])) {
         include 'pages/home.php';
       } else if (isset($_GET['records'])) {
         include 'pages/records.php';
+      } else if (isset($_GET['conference'])) {
+        include 'pages/conference.php';
+      } else if (isset($_GET['chat'])) {
+        include 'pages/chat.php';
+      } else if (isset($_GET['settings'])) {
+        include 'pages/settings.php';
       }
     ?>
 
-
-  
-
-    
   </div>
 
   <!-- Footer Nav -->
@@ -176,6 +337,8 @@ if (!isset($_SESSION['auth_user_id'])) {
   <script src="../../js/dark-rtl.js"></script>
   <script src="../../js/active.js"></script>
   <script src="../../js/pwa.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 
   <?php
     if (isset($_GET['home'])) {
